@@ -111,11 +111,8 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(this, HistoryActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_share) {
-            Intent i = new Intent(android.content.Intent.ACTION_SEND);
-            i.setType("text/plain");
-            i.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject test");
-            i.putExtra(android.content.Intent.EXTRA_TEXT, "http://www.github.com/Satan7797/");
-            startActivity(Intent.createChooser(i, "Share via"));
+            Intent i = new Intent(Intent.ACTION_VIEW,Uri.parse("https://github.com/Satan7797/DuBooks/blob/master/DuBooks.apk?raw=true"));
+            startActivity(i);
         } else if (id == R.id.nav_pref) {
             Intent intent = new Intent(this, SettingsActivity.class);
             startActivity(intent);

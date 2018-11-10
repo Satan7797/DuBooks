@@ -1,0 +1,20 @@
+{
+   "year":"Year 1",
+   "mainlist":[
+      {
+         "course":"Computer Science",
+         "list":[
+            {
+               "semester":"I",
+               "subject":"CSA",
+               "link":"https://drive.google.com/open?id=1JzpMoxzyQNiHG0Afe1y0g24uSRYfHh7X"
+            },
+            {
+               "semester":"II",
+               "subject":"Java(9th edition)",
+               "link":"https://drive.google.com/open?id=12eX_TvChpyvwl7kiWMy5sBZGAG3xmGr7"
+            }
+         ]
+      }
+   ]
+}

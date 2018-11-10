@@ -1,0 +1,40 @@
+{
+  "year": "Year 2",
+  "mainlist": [
+    {
+      "course": "Computer Science",
+      "list": [
+        {
+          "semester": "III",
+          "subject": "Operating System",
+          "link": "https://drive.google.com/open?id=1RB-YrrAr2OVTopMgeM0oTpPK4W-KFf0c"
+        },
+        {
+          "semester":"III",
+          "subject":"Data Structure(Adam Drozdek -4th edition)",
+          "link":"https://drive.google.com/open?id=15TLaOH9o1catlJCrsJ65RjmXuSeLL8su"
+        },
+        {
+          "semester": "III",
+          "subject": "Computer Networks(Prentice Hall)",
+          "link": "https://drive.google.com/open?id=1kE31HaBZ11HlZsNrYrbwfnihDcahXIV5"
+        },
+        {
+          "semester":"III",
+          "subject":"Computer Networks(Forouzan)",
+          "link":"https://drive.google.com/open?id=1S3TgTlhmpu7lgxi6KyjhpYxdl-9v4IuD"
+        },
+        {
+          "semester": "III",
+          "subject": "Head First Android",
+          "link": "https://drive.google.com/open?id=1-OTGxvQhFTQIAEmC9DlZA_UpWBIVYjRP"
+        },
+        {
+          "semester": "III",
+          "subject": "Android Application Development",
+          "link":"https://drive.google.com/open?id=1eYcUqs4miBbIl-6LW5g7Kn8m1EHPq-j8"
+        }
+      ]
+    }
+  ]
+}
