@@ -18,6 +18,8 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -41,55 +43,8 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        mEmptyTextView = findViewById(R.id.empty_textView);
-        yearPref = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.year), getString(R.string.year));
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        if (adapter != null) {
-            adapter.clear();
-        }
-
         adapter = new LinkAdapter(this, new ArrayList<LinkList>());
-
-        NetworkInfo activeNetworkInfo = ((ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE)).getActiveNetworkInfo();
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
-
-        if (yearPref.equals("year_one") || yearPref.equals("year_two") || yearPref.equals("year_three")) {
-            if (activeNetworkInfo == null || !activeNetworkInfo.isConnected()) {
-                findViewById(R.id.loading_spinner).setVisibility(View.GONE);
-                mEmptyTextView.setText("No Internet");
-            } else {
-                getSupportLoaderManager().initLoader(0, null, this);
-            }
-
-            ListView listView = findViewById(R.id.main_list);
-            listView.setEmptyView(this.mEmptyTextView);
-            listView.setAdapter(adapter);
-
-            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                    LinkList linkList = (LinkList) adapterView.getItemAtPosition(i);
-                    JSONArray jsonArray = linkList.getJsonArray();
-                    Intent intent = new Intent(MainActivity.this, Main2Activity.class);
-                    Main2Activity.jsonArray = jsonArray;
-                    startActivity(intent);
-                }
-            });
-        } else {
-            findViewById(R.id.main_list).setVisibility(View.GONE);
-            findViewById(R.id.loading_spinner).setVisibility(View.GONE);
-            mEmptyTextView.setText("No source selected");
-        }
+        update();
     }
 
     @Override
@@ -135,8 +90,8 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     protected void onPostResume() {
-        onStart();
         adapter.clear();
+        super.onStart();
         super.onPostResume();
     }
 
@@ -161,5 +116,78 @@ public class MainActivity extends AppCompatActivity
         Log.i("MyActivity", "ON Loader reset");
         if (adapter != null)
             this.adapter.clear();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.refresh) {
+            update();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @SuppressLint("SetTextI18n")
+    private void update() {
+        mEmptyTextView = findViewById(R.id.empty_textView);
+        yearPref = PreferenceManager.getDefaultSharedPreferences(this).getString(getString(R.string.year), getString(R.string.year));
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        if (adapter != null) {
+            adapter.clear();
+        }
+
+
+        NetworkInfo activeNetworkInfo = ((ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE)).getActiveNetworkInfo();
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+
+        if (yearPref.equals("year_one") || yearPref.equals("year_two") || yearPref.equals("year_three")) {
+            if (activeNetworkInfo == null || !activeNetworkInfo.isConnected()) {
+                findViewById(R.id.loading_spinner).setVisibility(View.GONE);
+                mEmptyTextView.setText("No Internet");
+            } else {
+                getSupportLoaderManager().initLoader(0, null, this);
+            }
+
+            ListView listView = findViewById(R.id.main_list);
+            listView.setEmptyView(this.mEmptyTextView);
+            listView.setAdapter(adapter);
+
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    LinkList linkList = (LinkList) adapterView.getItemAtPosition(i);
+                    JSONArray jsonArray = linkList.getJsonArray();
+                    Intent intent = new Intent(MainActivity.this, Main2Activity.class);
+                    Main2Activity.jsonArray = jsonArray;
+                    startActivity(intent);
+                }
+            });
+        } else {
+            findViewById(R.id.main_list).setVisibility(View.GONE);
+            findViewById(R.id.loading_spinner).setVisibility(View.GONE);
+            mEmptyTextView.setText("No source selected");
+        }
     }
 }
