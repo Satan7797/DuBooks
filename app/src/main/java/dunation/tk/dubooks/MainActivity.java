@@ -135,6 +135,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     protected void onPostResume() {
+        onStart();
         adapter.clear();
         super.onPostResume();
     }
