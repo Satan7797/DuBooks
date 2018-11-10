@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/year">
+    <ListPreference
+        android:defaultValue="None"
+        android:dialogTitle="Select Year..."
+        android:entries="@array/pref_entries"
+        android:key="@string/year"
+        android:entryValues="@array/pref_values"
+        android:title="Select Year..." />
+</PreferenceScreen>

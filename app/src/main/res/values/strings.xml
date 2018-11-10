@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">DuBooks</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Du Books</string>
+    <string name="nav_header_subtitle">dunationtk@gmail.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="history">History</string>
+    <string name="communicate">Communicate</string>
+    <string name="share">Share</string>
+    <string name="year">Year</string>
+    <string name="course">Course</string>
+    <string name="semester">semester</string>
+    <string name="subject">subject</string>
+    <string name="content_not_found">Content Not Found</string>
+    <string name="send">Send</string>
+</resources>

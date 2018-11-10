@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="pref_entries">
+        <item>Year 1</item>
+        <item>Year 2</item>
+        <item>Year 3</item>
+    </array>
+    <array name="pref_values">
+        <item>year_one</item>
+        <item>year_two</item>
+        <item>year_three</item>
+    </array>
+</resources>

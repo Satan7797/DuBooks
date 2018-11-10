@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <color name="colorPrimary">#ffffff</color>
+    <color name="colorPrimaryDark">#294cb3</color>
+    <color name="colorAccent">#294cb3</color>
+    <color name="primary_text_default_material_dark" tools:ignore="PrivateResource">#000000</color>
+</resources>
