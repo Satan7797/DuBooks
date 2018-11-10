@@ -86,6 +86,7 @@ public class MainActivity extends AppCompatActivity
                 }
             });
         } else {
+            findViewById(R.id.main_list).setVisibility(View.GONE);
             findViewById(R.id.loading_spinner).setVisibility(View.GONE);
             mEmptyTextView.setText("No source selected");
         }
